@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  database:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: db-pass123
+      MYSQL_DATABASE: chat-db
+    volumes:
+    - database-data:/var/lib/mysql
+
+volumes:
+  database-data:
