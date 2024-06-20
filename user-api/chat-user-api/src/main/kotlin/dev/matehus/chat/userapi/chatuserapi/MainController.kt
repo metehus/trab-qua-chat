@@ -4,6 +4,7 @@ import dev.matehus.chat.userapi.chatuserapi.dto.*
 import dev.matehus.chat.userapi.chatuserapi.entity.User
 import dev.matehus.chat.userapi.chatuserapi.services.UserService
 import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -25,6 +26,11 @@ class MainController(
     @GetMapping("users")
     fun getUser(@RequestParam("email") email: String): User {
         return this.userService.getUser(email)
+    }
+
+    @DeleteMapping("users")
+    fun deleteUser(@RequestParam("id") id: String) {
+        return this.userService.deleteUser(id)
     }
 
     @PostMapping("token")

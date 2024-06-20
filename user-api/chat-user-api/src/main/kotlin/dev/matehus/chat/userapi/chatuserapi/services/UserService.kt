@@ -27,6 +27,10 @@ class UserService(
         return this.userRepository.getUserByEmail(email) ?: throw NotFoundException("User not found")
     }
 
+    fun deleteUser(id: String) {
+        this.userRepository.deleteById(UUID.fromString(id))
+    }
+
     fun authenticate(email: String, password: String): TokenResponseDTO {
         val user = this.getUser(email)
 
