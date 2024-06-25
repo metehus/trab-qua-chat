@@ -24,8 +24,9 @@ export class MessagesService {
       payload.userIdReceive,
     );
 
-    channel.assertQueue(queue);
+    await channel.assertQueue(queue);
     channel.sendToQueue(queue, Buffer.from(JSON.stringify(payload)));
+    await channel.close();
 
     return {
       msg: 'Message sent!',
